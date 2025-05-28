@@ -29,21 +29,32 @@ const Bank = (props) => {
         exit: { opacity: 0, x: -20 },
     };
 
+    const sidebarVariants = {
+        initial: { opacity: 0, x: -20 },
+        animate: { opacity: 1, x: 0 },
+    };
+
     return (
         <div className="flex flex-col md:flex-row w-full min-h-screen">
             {/* Sidebar */}
-            <div className="w-full md:w-64 lg:w-80 fixed md:static top-0 left-0 z-10">
+            <motion.div
+                className="w-full md:w-64 lg:w-80 fixed md:static top-0 left-0 z-10"
+                initial="initial"
+                animate="animate"
+                variants={sidebarVariants}
+                transition={{ duration: 0.3, delay: 0.2 }}
+            >
                 <UserNav data={nav} />
-            </div>
+            </motion.div>
 
             {/* Main Content */}
             <motion.div
-                className="flex-1 p-4 md:pl-0 md:pr-6 lg:pr-12 w-full mt-16 md:mt-0"
+                className="flex-1 px-4 sm:px-6 md:px-8 lg:px-12 w-full mt-16 md:mt-0"
                 initial="initial"
                 animate="animate"
                 exit="exit"
                 variants={contentVariants}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
                 key={handle} // Ensure animation triggers on route change
             >
                 {handle === 'profile' && <EditProfile />}
