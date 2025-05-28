@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(
 	cors({
 		origin: [
-			"http://localhost:3000",
+			"https://blood-bank-742x.vercel.app",
 		],
 		credentials: true,
 	})
